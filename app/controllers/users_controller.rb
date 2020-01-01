@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[destroy edit update]
 
-    respond_to :html
+    respond_to :html, :json
 
     def index
       if params[:search].blank?

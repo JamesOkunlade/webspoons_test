@@ -1,0 +1,38 @@
+<div>
+    <h1>Users</h1>
+</div>
+
+
+<%= render 'form', user: @user %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Title</th>
+      <th>Phone</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.title %></td>
+        <td><%= user.phone %></td>
+        <% if user.status %>
+          <td>Active</td>
+        <% else %>
+          <td>Inactive</td>
+        <% end %>
+
+        <td><%= link_to 'remove', user, remote: true, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

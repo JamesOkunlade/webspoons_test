@@ -1,0 +1,12 @@
+<%= form_with(model: user) do |form| %>
+    <div class="fields">
+        <%= form.text_field :name, id: :name, placeholder: "Name"  %>
+        <%= form.email_field :email, id: :email, placeholder: "Email" %>
+        <%= form.text_field :title, id: :title, placeholder: "Title" %>
+        <%= form.number_field :phone, id: :phone, placeholder: "Phone" %>
+        <%= form.select :status, ["Active", "Inactive"], id: :status %>
+
+        <%= form.submit "Create" %>
+    </div>   
+<% end %>
+  

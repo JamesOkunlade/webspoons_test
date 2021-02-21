@@ -90,32 +90,6 @@ p {
     color:hsl(360, 67%, 44%)
 }
 
-
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-  body {
-    font-size: 1rem;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1;
-  }
-}
-/* more global css */
-
 .btn {
     color: hsl(242, 52%, 24%);
     padding: 0.375rem 0.75rem;
@@ -203,19 +177,40 @@ th, td {
     bottom: 15px;
     color: #fff;
 }
-
-.modal-box {
-  width: 100%;
-  text-align: center;
-  padding: 10px 30%;
-  .form-box {
-    background: #dfe9f1;
-    border: none;
-    padding: .5rem;
-  }
-  
-
+.hide-modal {
+  display: none; /* Hidden by default */
 }
+.display-modal {
+  display: block; 
+}
+.modal-content {
+  position: fixed; 
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  .modal-box {
+    border: 1px solid #888;
+    margin: 15% auto; /* 15% from the top and centered */
+    width: 100%;
+    text-align: center;
+    padding: 10px 30%;
+    .modal-header {
+      background-color: #fefefe;
+    }
+    .form-box {
+      background: #dfe9f1;
+      border: none;
+      padding: .5rem;
+    }
+    
+  }
+}
+
 .form-inputs {
   display: block;
   margin: .5rem auto;
@@ -267,3 +262,29 @@ th, td {
     *:first-child + html .digg_pagination {
       overflow: hidden; 
     }
+
+
+    @media screen and (min-width: 800px) {
+      h1 {
+        font-size: 4rem;
+      }
+      h2 {
+        font-size: 2.5rem;
+      }
+      h3 {
+        font-size: 2rem;
+      }
+      h4 {
+        font-size: 1rem;
+      }
+      body {
+        font-size: 1rem;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        line-height: 1;
+      }
+    }
+    /* more global css */

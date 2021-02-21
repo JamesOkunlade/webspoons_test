@@ -1,2 +1,5 @@
-$("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
-$("#modal-window").modal();
+$(function(event) {
+    console.log("Greetings");
+    
+    $("#modal-window").find(".modal-content").html("<%= j (render 'mode') %>");
+});

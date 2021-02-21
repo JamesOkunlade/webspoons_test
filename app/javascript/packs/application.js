@@ -15,9 +15,7 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
-
-// import @bootstrap
+// import bootstrap
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -30,7 +28,6 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
-//= require rails-ujs
 //= require jquery3
 //= require popper
 //= require bootstrap

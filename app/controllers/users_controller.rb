@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[destroy edit update]
 
-    # respond_to :html, :json
-
     def index
       if params[:search].blank?
         @users = User.all.paginate(page: params[:page], per_page: 25).order('created_at desc')
@@ -15,17 +13,15 @@ class UsersController < ApplicationController
     end
 
     def new
-        # @user = User.new
+        @user = User.new
         respond_to do |format|
           format.html
           format.js
         end
-        # respond_modal_with @user
     end
 
     def create
         @user = User.create(user_params)
-        # respond_modal_with @user, location: users_path
         respond_to do |format|
           if @user.save
             format.html { redirect_to users_path }
@@ -36,12 +32,10 @@ class UsersController < ApplicationController
     end
 
     def edit
-    #   respond_modal_with @user
     end
 
     def update
         @user.update(user_params)
-        # respond_modal_with @user, location: users_path
         respond_to do |format|
             if @user.update(user_params)
               format.html { redirect_to users_path, notice: 'User successfully updated' }

@@ -17,14 +17,22 @@
 
 console.log('Hello World from Webpacker')
 
+// import @bootstrap
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
 
 // import styles/styles
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+//= require rails-ujs
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require_tree .
 

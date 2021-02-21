@@ -5,7 +5,7 @@
 
 <section class="new">
   <div>
-    <%= link_to 'Add user', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0', data: { modal: true } %>
+    <%= link_to 'Add user', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
   </div>
 </section>
     
@@ -18,12 +18,6 @@
         <%= button_tag "Search for user", class: " btn search_btn"%>
       </div>
     <% end %>
-  </div>
-
-  <div class="modal-box">
-      <div class="form-box">
-        <%= render 'form', user: @user %> 
-      </div>
   </div>
 
   <table>
@@ -44,12 +38,12 @@
           <td><%= user.email %></td>
           <td><%= user.title %></td>
           <td><%= user.phone %></td>
-          <% if user.status === 'active' %>
-            <td class="status_active">Active</td>
+          <% if user.status === "active" %>
+            <td class="status_active">active</td>
           <% else %>
-            <td class="status_inactive">Inactive</td>
+            <td class="status_inactive">inactive</td>
           <% end %>
-          <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4', data: { modal: true }%></td>
+          <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4' %></td>
           <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
         </tr>
       <% end %>
@@ -60,8 +54,6 @@
     <%= will_paginate @users, :container => false %>
   </section>
 </section>
-
-
 
 
 

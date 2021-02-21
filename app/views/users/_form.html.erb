@@ -3,8 +3,8 @@
         <%= form.text_field :name, id: :name, placeholder: "Name", class: 'input'  %>
         <%= form.email_field :email, id: :email, placeholder: "Email", class: 'input' %>
         <%= form.text_field :title, id: :title, placeholder: "Title", class: 'input' %>
-        <%= form.number_field :phone, id: :phone, placeholder: "Phone", class: 'input' %>
-        <%= form.select :status, [["Active", "active"], ["Inactive", "inactive"]], class: 'input' %>
+        <%= form.telephone_field :phone, id: :phone, placeholder: "Phone", class: 'input' %>
+        <%= form.select :status, ["active", "inactive"], class: 'input' %>
     </div>
     <div class="form-button">
         <%= form.submit %>

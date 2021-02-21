@@ -10,9 +10,9 @@ require 'faker'
 
 1000.times do
     user = User.create(name: Faker::Name.name,
-                            email: Faker::Internet.email,
+                            email: Faker::Internet.unique.email,
                             title: Faker::Job.title,
                             phone: Faker::PhoneNumber.phone_number_with_country_code,
-                            status: ['active', 'inactive'].sample
+                            status: ["active", "inactive"].sample
      )
 end

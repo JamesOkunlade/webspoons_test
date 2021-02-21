@@ -1,10 +1,12 @@
-<div id='modal-holder-edit'>
-  <div class="modal-header">
-    <h1 class="title modal-title">Editing user</h1>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-  <%= render 'form', user: @user %>
+<div class="modal-box">
+      <div class="modal-header">
+          <h1 class="title modal-title">Editing user</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="form-box">
+        <%= render 'form', user: @user %> 
+      </div>
 </div>
+  

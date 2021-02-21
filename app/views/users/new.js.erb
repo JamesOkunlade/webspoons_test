@@ -1,6 +1,2 @@
-
-
-# $('#myModal').modal()                      // initialized with defaults
-# $('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-# $('#myModal').modal('show')                // initializes and invokes show immediately
-console.log("working")
+$("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
+$("#modal-window").modal();

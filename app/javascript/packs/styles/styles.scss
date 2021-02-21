@@ -1,0 +1,269 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+ @import "bootstrap";
+
+
+ @import url("https://fonts.googleapis.com/css?family=Catamaran:400,700&display=swap");
+
+:root {
+  --clr-primary: #2680c0;
+  --clr-primary-dark: hsl(205, 100%, 21%);
+  --clr-primary-light: hsl(205, 84%, 74%);
+  --clr-grey-1: #102a42;
+  --clr-grey-5: #c5d6e6;
+  --clr-white: #fff;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --ff-primary: "Catamaran", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --large-screen-width: 1170px;
+  --small-screen-width: 90vw;
+  --fixed-width: 50rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-primary);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-grey-1);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+.status_active {
+    color:rgb(17, 160, 77)
+}
+.status_inactive {
+    color:hsl(360, 67%, 44%)
+}
+
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/* more global css */
+
+.btn {
+    color: hsl(242, 52%, 24%);
+    padding: 0.375rem 0.75rem;
+    letter-spacing: var(--spacing);
+    display: inline-block;
+    font-weight: 700;
+    transition: var(--transition);
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+}
+
+.danger {
+    background: #fff;
+    color: hsl(360, 67%, 44%);
+}
+
+.btn:hover {
+  color: var(--clr-primary);
+}
+
+.search {
+    margin: 10px auto;
+    .input {
+        width: 60%;
+        padding: .5rem 5px;
+        border: 2px solid #2680c0;;
+    }
+    .search_btn {
+        background: #fff;
+        width: 30%;
+        padding: .5rem 5px;
+        color: #2680c0;
+        border: 2px solid #2680c0;
+    }
+}
+
+.header {
+    width: 100%;
+    height: 200px;
+    padding: 1.5rem 0.75rem;
+    color: #fff;
+    text-align: center;
+    background: hsl(242, 52%, 24%);
+}
+
+.container {
+  min-height: calc(100vh - 80px);
+  width: 90vw;
+  margin: 5px auto;
+  padding: 2.5rem 0;
+}
+
+tr {
+    text-align: left;
+}
+
+th, td {
+  padding: .5rem 5px;
+}
+
+.card:hover {
+  background: var(--clr-grey-5);
+}
+
+.remove-btn {
+  color: var(--clr-primary);
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: transparent;
+  border: none;
+  margin-top: 0.375rem;
+  transition: var(--transition);
+}
+
+.remove-btn:hover {
+  color: var(--clr-primary-light);
+}
+
+.new {
+    background: #2680c0;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    color: #fff;
+}
+
+.modal-box {
+  width: 100%;
+  text-align: center;
+  padding: 10px 30%;
+  .form-box {
+    background: #dfe9f1;
+    border: none;
+    padding: .5rem;
+  }
+  
+
+}
+.form-inputs {
+  display: block;
+  margin: .5rem auto;
+  .input {
+    width: 100%;
+    padding: .5rem 5px;
+    margin: .5rem auto;
+    border: 2px solid #2680c0;;
+  }
+}
+
+
+    .digg_pagination {
+        background: white;
+        cursor: default;
+    }
+    .digg_pagination a, .digg_pagination span, .digg_pagination em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px; 
+    }
+    .digg_pagination .current {
+      font-style: normal;
+      font-weight: bold;
+      background: #2e6ab1;
+      color: white;
+      border: 1px solid #2e6ab1; 
+    }
+    .digg_pagination a {
+      text-decoration: none;
+      color: #105cb6;
+      border: 1px solid #9aafe5; 
+    }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+        color: #000033;
+        border-color: #000033; 
+    }
+    .digg_pagination:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; 
+    }
+    * html .digg_pagination {
+      height: 1%; 
+    }
+    *:first-child + html .digg_pagination {
+      overflow: hidden; 
+    }

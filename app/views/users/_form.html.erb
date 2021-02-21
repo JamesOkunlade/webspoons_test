@@ -1,12 +1,15 @@
-<%= form_with(model: user) do |form| %>
-    <div class="fields">
+<%= form_for(@user, remote: request.xhr?, html: { data: { modal: true } }) do |form| %>
+    <div class="modal-body">
         <%= form.text_field :name, id: :name, placeholder: "Name"  %>
         <%= form.email_field :email, id: :email, placeholder: "Email" %>
         <%= form.text_field :title, id: :title, placeholder: "Title" %>
         <%= form.number_field :phone, id: :phone, placeholder: "Phone" %>
-        <%= form.select :status, ["Active", "Inactive"], id: :status %>
-
-        <%= form.submit "Create" %>
-    </div>   
+        <%= form.select :status, [["Active", "active"], ["Inactive", "inactive"]], id: :status %>
+    </div>
+    <div class="modal-footer">
+        <%= form.submit %>
+    </div>
 <% end %>
-  
+
+
+

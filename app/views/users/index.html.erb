@@ -1,38 +1,61 @@
-<div>
-    <h1>Users</h1>
-</div>
+<section class="header">
+    <h1>Webspoons</h1>
+    <h4>A list of users</h4>
+</section>
 
+<section class="new">
+  <div>
+    <%= link_to 'Add user', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0', data: { modal: true } %>
+  </div>
+</section>
+    
+<section class="container">
 
-<%= render 'form', user: @user %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Title</th>
-      <th>Phone</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.title %></td>
-        <td><%= user.phone %></td>
-        <% if user.status %>
-          <td>Active</td>
-        <% else %>
-          <td>Inactive</td>
-        <% end %>
-
-        <td><%= link_to 'remove', user, remote: true, method: :delete %></td>
-      </tr>
+  <div>
+    <%= form_tag(users_path, :method => "get") do %>
+      <div class="search">
+        <%= search_field_tag :search, params[:search], placeholder: "Type ", class: "input" %>
+        <%= button_tag "Search for user", class: " btn search_btn"%>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Title</th>
+        <th>Phone</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.title %></td>
+          <td><%= user.phone %></td>
+          <% if user.status === 'active' %>
+            <td class="status_active">Active</td>
+          <% else %>
+            <td class="status_inactive">Inactive</td>
+          <% end %>
+          <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4', data: { modal: true }%></td>
+          <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <section class="digg_pagination">
+    <%= will_paginate @users, :container => false %>
+  </section>
+</section>
+
+
+
 
 

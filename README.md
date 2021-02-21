@@ -1,24 +1,65 @@
-# README
+# Webspoons Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+A simple Rails app with a list of users and their attributes
 
-* Ruby version
 
-* System dependencies
+## Requirements
 
-* Configuration
+- Ruby version 2.7.2
 
-* Database creation
+- Rails version 6
 
-* Database initialization
+- Postgres
 
-* How to run the test suite
+## Installation
 
-* Services (job queues, cache servers, search engines, etc.)
+- Clone the repository and get inside it:
 
-* Deployment instructions
+```
+git clone git@github.com:JamesOkunlade/webspoons_test.git
 
-* ...
+cd webspoons_test
+```
+
+- Install all gems:
+
+```
+bundle install
+```
+
+- Create a postgres database:
+
+```
+rails db:create
+```
+
+- Migrate database
+
+```
+rails db:migrate
+```
+
+- Seed users
+
+```
+rails db:seed
+```
+
+- Start the server
+
+```
+rails s
+```
+
+## Live Version
+
+[Webspoons](https://tranquil-cove-78287.herokuapp.com//)
+
+
+## Author
+
+James Okunlade
+
+- [Github profile](https://github.com/JamesOkunlade)

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[destroy edit update]
 
-    respond_to :html, :json
+    # respond_to :html, :json
 
     def index
       if params[:search].blank?
@@ -11,39 +11,40 @@ class UsersController < ApplicationController
         @users = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(
                   page: params[:page], per_page: 25).order('created_at desc')
       end
+      @user = User.new
     end
 
     def new
         @user = User.new
-        respond_modal_with @user
+        # respond_modal_with @user
     end
 
     def create
         @user = User.create(user_params)
-        respond_modal_with @user, location: users_path
-        # respond_to do |format|
-        #   if @user.save
-        #     format.html { redirect_to users_path }
-        #   else
-        #     format.html { redirect_to users_path }
-        #   end
-        # end
+        # respond_modal_with @user, location: users_path
+        respond_to do |format|
+          if @user.save
+            format.html { redirect_to users_path }
+          else
+            format.html { redirect_to users_path }
+          end
+        end
     end
 
     def edit
-      respond_modal_with @user
+    #   respond_modal_with @user
     end
 
     def update
         @user.update(user_params)
-        respond_modal_with @user, location: users_path
-        # respond_to do |format|
-        #     if @user.update(user_params)
-        #       format.html { redirect_to users_path, notice: 'User successfully updated' }
-        #     else
-        #       format.html { redirect_to users_path }
-        #     end
-        # end
+        # respond_modal_with @user, location: users_path
+        respond_to do |format|
+            if @user.update(user_params)
+              format.html { redirect_to users_path, notice: 'User successfully updated' }
+            else
+              format.html { redirect_to users_path }
+            end
+        end
     end
 
     def destroy

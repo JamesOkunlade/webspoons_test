@@ -204,10 +204,29 @@ th, td {
     color: #fff;
 }
 
-.modal {
-  border: 2px solid red;
-}
+.modal-box {
+  display: none;
+  width: 100%;
+  text-align: center;
+  padding: 10px 30%;
+  .form-box {
+    background: #dfe9f1;
+    border: none;
+    padding: .5rem;
+  }
+  
 
+}
+.form-inputs {
+  display: block;
+  margin: .5rem auto;
+  .input {
+    width: 100%;
+    padding: .5rem 5px;
+    margin: .5rem auto;
+    border: 2px solid #2680c0;;
+  }
+}
 
 
     .digg_pagination {

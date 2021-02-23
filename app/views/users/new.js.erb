@@ -2,3 +2,12 @@ $(function(event) {
     $("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
     $('.hide-modal').removeClass('hide-modal').addClass('display-modal');
 });
+
+$(document).on('click','.close',function() {
+    $('.display-modal').removeClass('display-modal').addClass('hide-modal');
+});
+
+
+
+    
+

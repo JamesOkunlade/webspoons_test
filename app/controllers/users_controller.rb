@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: %i[destroy edit update]
+  helper_method :sort_column, :sort_direction
+  before_action :set_user, only: %i[destroy edit update]
 
     def index
-      if params[:search].blank?
-        @users = User.all.paginate(page: params[:page], per_page: 25).order('created_at desc')
-      else
-        @parameter = params[:search].downcase
-        @users = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(
-                  page: params[:page], per_page: 25).order('created_at desc')
-      end
+      # if params[:search].blank?
+      #   @users = User.all.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 25)
+      # else
+      #   @parameter = params[:search].downcase
+      #   @users = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(
+      #             page: params[:page], per_page: 25)
+      # end
+      @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
       @user = User.new
     end
 
@@ -21,14 +23,16 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
+      index 
+      @user = User.create(user_params)
         respond_to do |format|
           if @user.save
             format.html { redirect_to users_path }
+            format.js
           else
             format.html { redirect_to users_path }
           end
-        end
+      end
     end
 
     def edit
@@ -39,6 +43,7 @@ class UsersController < ApplicationController
         respond_to do |format|
             if @user.update(user_params)
               format.html { redirect_to users_path, notice: 'User successfully updated' }
+              # format.js
             else
               format.html { redirect_to users_path }
             end
@@ -49,10 +54,19 @@ class UsersController < ApplicationController
         @user.destroy
         respond_to do |format|
             format.html { redirect_to users_path, notice: 'User deleted' }
+            # format.js
         end
     end
 
     private
+
+    def sort_column
+      User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
     def set_user
         @user = User.find(params[:id])

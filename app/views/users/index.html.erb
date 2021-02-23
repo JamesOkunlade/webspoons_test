@@ -12,7 +12,7 @@
 
   
   <div id="search">
-    <%= form_tag(users_path, :method => "get") do %>
+    <%= form_tag(users_path, :method => "get", remote: true) do %>
       <div class="search">
         <%= search_field_tag :search, params[:search], placeholder: "Type ", class: "input" %>
         <%= button_tag "Search for user", class: " btn search_btn"%>
@@ -20,38 +20,35 @@
     <% end %>
   </div>
 
+  <%= form_tag users_path, :method => 'get', :id => "users_search" do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+    <div id="users"><%= render 'users' %></div>
+  <% end %>
+
+
+
+
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Title</th>
-        <th>Phone</th>
-        <th>Status</th>
+        <th><%= sortable "name" %></th>
+        <th><%= sortable "email" %></th>
+        <th><%= sortable "title" %></th>
+        <th><%= sortable "phone" %></th>
+        <th><%= sortable "status" %></th>
       </tr>
     </thead>
 
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.title %></td>
-          <td><%= user.phone %></td>
-          <% if user.status === "active" %>
-            <td class="status_active">active</td>
-          <% else %>
-            <td class="status_inactive">inactive</td>
-          <% end %>
-          <td class=""><%= link_to 'edit', edit_user_path(user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'} %></td>
-          <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
-        </tr>
-      <% end %>
+    <tbody id="table-body">
+      <%= render 'users', users: @users %>
     </tbody>
   </table>
 
   <section class="digg_pagination">
-    <%= will_paginate @users, :container => false %>
+      <%= will_paginate @users, :container => false %>
   </section>
 </section>
 

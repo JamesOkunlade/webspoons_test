@@ -3,14 +3,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[destroy edit update]
 
     def index
-      # if params[:search].blank?
-      #   @users = User.all.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 25)
-      # else
-      #   @parameter = params[:search].downcase
-      #   @users = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(
-      #             page: params[:page], per_page: 25)
-      # end
-      @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
+      if params[:search].blank?
+        @users = User.all.order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
+      else
+        @parameter = params[:search].downcase
+        @users = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").order(sort_column + " " + sort_direction).paginate(
+                    page: params[:page], per_page: 25)
+      end
       @user = User.new
     end
 
@@ -22,9 +21,9 @@ class UsersController < ApplicationController
         end
     end
 
-    def create
-      index 
-      @user = User.create(user_params)
+    def create 
+      index
+      @user = User.new(user_params)
         respond_to do |format|
           if @user.save
             format.html { redirect_to users_path }

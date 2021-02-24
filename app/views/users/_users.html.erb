@@ -1,20 +1,39 @@
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.title %></td>
-    <td><%= user.phone %></td>
-    <% if user.status === 'active' %>
-      <td class="status_active">Active</td>
-    <% else %>
-      <td class="status_inactive">Inactive</td>
-    <% end %>
-    <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4', data: { modal: true }%></td>
-    <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
-  </tr>
-<% end %>
-
-
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
-<%= will_paginate @users %>
+
+<table class="pretty">
+      <tr>
+        <th><%= sortable "name" %></th>
+        <th><%= sortable "email" %></th>
+        <th><%= sortable "title" %></th>
+        <th><%= sortable "phone" %></th>
+        <th><%= sortable "status" %></th>
+      </tr>
+
+      <% for user in @users %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.title %></td>
+          <td><%= user.phone %></td>
+          <% if user.status === 'active' %>
+            <td class="status_active">Active</td>
+          <% else %>
+            <td class="status_inactive">Inactive</td>
+          <% end %>
+          <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4', data: { modal: true }%></td>
+          <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
+        </tr>
+      <% end %>
+</table>
+
+<section class="digg_pagination">
+      <%= will_paginate @users %>
+</section>
+
+
+
+
+
+
+

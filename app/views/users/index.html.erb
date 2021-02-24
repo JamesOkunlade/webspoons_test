@@ -12,14 +12,6 @@
 
   
   <div id="search">
-    <%= form_tag(users_path, :method => "get", remote: true) do %>
-      <div class="search">
-        <%= search_field_tag :search, params[:search], placeholder: "Type ", class: "input" %>
-        <%= button_tag "Search for user", class: " btn search_btn"%>
-      </div>
-    <% end %>
-
-
     <%= form_tag users_path, :method => 'get', :id => "users_search" do %>
       <%= hidden_field_tag :direction, params[:direction] %>
       <%= hidden_field_tag :sort, params[:sort] %>
@@ -31,34 +23,7 @@
       </div>
       <div id="users"><%= render 'users' %></div>
     <% end %>
-
-
   </div>
-
-  
-
-
-
-
-  <table>
-    <thead>
-      <tr>
-        <th><%= sortable "name" %></th>
-        <th><%= sortable "email" %></th>
-        <th><%= sortable "title" %></th>
-        <th><%= sortable "phone" %></th>
-        <th><%= sortable "status" %></th>
-      </tr>
-    </thead>
-
-    <tbody id="table-body">
-      <%= render 'users', users: @users %>
-    </tbody>
-  </table>
-
-  <section class="digg_pagination">
-      <%= will_paginate @users, :container => false %>
-  </section>
 </section>
 
 

@@ -1,11 +1,6 @@
 class User < ApplicationRecord
-    attr_accessor :name, :status, :phone, :email, :title
+    default_scope -> { order(created_at: :desc) }
     
-    # paginate 20
-    # self.per_page = 25
-    # default_scope -> { order(created_at: :desc) }
-
-
     # Validations
     validates_presence_of :name, :status, :phone
     validates :email, presence: true, length: { maximum: 50, minimum: 5 },
@@ -15,11 +10,10 @@ class User < ApplicationRecord
 
     def self.search(search)
         if search
-            where('name LIKE ?', "%#{search}%")
+            @parameter = search.downcase
+            where('name LIKE ?', "%#{@parameter}%")
         else
             all 
-            # find(:all)
-            # scoped
         end
     end
 end

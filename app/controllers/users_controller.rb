@@ -41,8 +41,9 @@ class UsersController < ApplicationController
         @user.update(user_params)
         respond_to do |format|
             if @user.update(user_params)
+              index
               format.html { redirect_to users_path, notice: 'User successfully updated' }
-              # format.js
+              format.js
             else
               format.html { redirect_to users_path }
             end

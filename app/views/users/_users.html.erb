@@ -21,7 +21,7 @@
           <% else %>
             <td class="status_inactive">Inactive</td>
           <% end %>
-          <td class=""><%= link_to 'edit', edit_user_path(user), class: 'btn mr-4', data: { modal: true }%></td>
+          <td class=""><%= link_to 'edit', edit_user_path(user), remote: true, class: 'btn mr-4', data: { modal: true }%></td>
           <td class=""><%= link_to 'delete', user, remote: true, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn danger" %></td>
         </tr>
       <% end %>

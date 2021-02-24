@@ -39,7 +39,7 @@ ActiveStorage.start()
 console.log("working")
 
 $(function() {
-    $("#users th a, #users .pagination a").on("click", function() {
+    $("#users").on("click", 'a', function() {
       $.getScript(this.href);
       return false;
     });
